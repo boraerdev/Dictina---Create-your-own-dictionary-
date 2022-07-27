@@ -11,7 +11,13 @@ struct FavListView: View {
     @StateObject var cd: CoreData = CoreData()
     var body: some View {
         VStack{
-           listView
+            if cd.words.isEmpty{
+                
+                Text("Your favorites is empty for now.").padding(50).multilineTextAlignment(.center).foregroundColor(.secondary)
+                Spacer()
+            } else {
+                listView
+            }
         }
         .navigationTitle("Favorites")
         .navigationBarTitleDisplayMode(.inline)

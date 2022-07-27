@@ -25,27 +25,18 @@ class CoreData: ObservableObject{
         }
         self.fetchData()
     }
-    
     func addFav(data: Word){
         if (favWords.first(where: {$0.id == data.id}) == nil){
             data.fav = true
             finish()
         }
     }
-    
-    
     func removeFav(data: Word){
-        if let i = (favWords.firstIndex(where: {$0.id == data.id})) {
+        if let _ = (favWords.firstIndex(where: {$0.id == data.id})) {
             data.fav = false
             finish()
-            
         }
     }
-    
-    
-    
-    
-    
     func fetchData(){
         let request = NSFetchRequest<Word>(entityName: "Word")
         

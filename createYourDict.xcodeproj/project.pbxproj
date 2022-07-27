@@ -18,6 +18,7 @@
 		0A05242E289096A7001275A7 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A05242D289096A7001275A7 /* DetailView.swift */; };
 		0A0524312890AE53001275A7 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0524302890AE53001275A7 /* FavListView.swift */; };
 		0A0524332890C710001275A7 /* Hview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0524322890C710001275A7 /* Hview.swift */; };
+		0A0524362890C7B6001275A7 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0524352890C7B6001275A7 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		0A05242D289096A7001275A7 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0A0524302890AE53001275A7 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
 		0A0524322890C710001275A7 /* Hview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hview.swift; sourceTree = "<group>"; };
+		0A0524352890C7B6001275A7 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +88,9 @@
 		0A052415289077E8001275A7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0A05242F2890AE3C001275A7 /* FavListView */,
 				0A052428289089CF001275A7 /* Components */,
+				0A0524342890C7A0001275A7 /* Info */,
+				0A05242F2890AE3C001275A7 /* FavList */,
 				0A05242B2890968C001275A7 /* DetailPage */,
 				0A05242228907D15001275A7 /* AddPage */,
 				0A052417289077FD001275A7 /* Home */,
@@ -176,12 +179,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0A05242F2890AE3C001275A7 /* FavListView */ = {
+		0A05242F2890AE3C001275A7 /* FavList */ = {
 			isa = PBXGroup;
 			children = (
 				0A0524302890AE53001275A7 /* FavListView.swift */,
 			);
-			path = FavListView;
+			path = FavList;
+			sourceTree = "<group>";
+		};
+		0A0524342890C7A0001275A7 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				0A0524352890C7B6001275A7 /* InfoView.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 				0A0524332890C710001275A7 /* Hview.swift in Sources */,
 				0A05240A28907180001275A7 /* HomeView.swift in Sources */,
 				0A05241B289078CC001275A7 /* CoreData.swift in Sources */,
+				0A0524362890C7B6001275A7 /* InfoView.swift in Sources */,
 				0A05240828907180001275A7 /* createYourDictApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@ struct AddPageView: View {
     @State var definition: String = ""
     @State var examples: String = ""
     @State var saveClicked: Bool = false
+    
     @EnvironmentObject var cd: CoreData
     
 

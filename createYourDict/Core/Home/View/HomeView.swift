@@ -11,33 +11,33 @@ struct HomeView: View {
     @State var goAddPage: Bool = false
     @EnvironmentObject var cd: CoreData
     @State var schemeSelector: Bool = false
-    @State var colorScheme: ColorScheme?
+    @State var goInfo: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             VStack{
-                listView
-                ForEach(cd.favWords) { gelen in
-                    Text(gelen.name ?? "")
+                if cd.words.isEmpty{
+                    
+                    Text("Your dictionary is empty for now. Add a new word by clicking the add button at the bottom!").padding(50).multilineTextAlignment(.center).foregroundColor(.secondary)
+                    Spacer()
+                } else {
+                    listView
                 }
             }
             .sheet(isPresented: $goAddPage) {
                 AddPageView()
             }
             addButton
+                .sheet(isPresented: $goInfo) {
+                    InfoView()
+                }
         }
         .navigationTitle("Words")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    schemeSelector.toggle()
-                    if schemeSelector{
-                        colorScheme = .dark
-                    }
-                    else{
-                        colorScheme = .light
-                    }
+                    goInfo.toggle()
                 } label: {
                     Image(systemName: "i.circle")
                         .foregroundColor(.black)
