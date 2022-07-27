@@ -42,6 +42,7 @@ extension AddPageView {
             Spacer()
             Image(systemName: "xmark")
                 .font(.title2)
+                .foregroundColor(.blue)
                 .onTapGesture {
                     presentationMode.wrappedValue.dismiss()
                 }
@@ -78,7 +79,7 @@ extension AddPageView {
     }
     
     private var sectionView: some View {
-        Section("About Your Word 👋") {
+        Section("About Your Word") {
             GroupBox(){
                 textField(title: "Name", name: $name)
                     .padding()

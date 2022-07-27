@@ -7,11 +7,14 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class CoreData: ObservableObject{
     
     let container: NSPersistentContainer
     @Published var words: [Word] = []
+    @Published var favWords : [Word] = []
+    var cancellable = Set<AnyCancellable>()
     
     init(){
         container = NSPersistentContainer(name: "WordCoreModel")
@@ -23,6 +26,26 @@ class CoreData: ObservableObject{
         self.fetchData()
     }
     
+    func addFav(data: Word){
+        if (favWords.first(where: {$0.id == data.id}) == nil){
+            data.fav = true
+            finish()
+        }
+    }
+    
+    
+    func removeFav(data: Word){
+        if let i = (favWords.firstIndex(where: {$0.id == data.id})) {
+            data.fav = false
+            finish()
+            
+        }
+    }
+    
+    
+    
+    
+    
     func fetchData(){
         let request = NSFetchRequest<Word>(entityName: "Word")
         
@@ -31,7 +54,22 @@ class CoreData: ObservableObject{
         } catch let error {
             print(error)
         }
+        
+        
+         $words
+            .map { gelen -> [Word] in
+                let filtered = gelen.filter { kelime -> Bool in
+                    return kelime.fav ? true : false
+                }
+                return filtered
+            }
+            .sink { gelen in
+                self.favWords = gelen
+            }
+            .store(in: &cancellable)
+        
     }
+        
     
     func addData(name: String, pronantation: String, definition: String, examples: String){
         let entity = Word(context: container.viewContext)
@@ -54,6 +92,11 @@ class CoreData: ObservableObject{
         finish()
     }
     
+    func updateData(entity: Word){
+        //
+        
+    }
+    
     
     func save(){
         do {
@@ -70,3 +113,4 @@ class CoreData: ObservableObject{
 
     
 }
+

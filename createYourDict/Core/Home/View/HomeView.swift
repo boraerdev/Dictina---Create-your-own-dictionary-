@@ -17,6 +17,9 @@ struct HomeView: View {
         ZStack(alignment: .bottomTrailing){
             VStack{
                 listView
+                ForEach(cd.favWords) { gelen in
+                    Text(gelen.name ?? "")
+                }
             }
             .sheet(isPresented: $goAddPage) {
                 AddPageView()
@@ -39,6 +42,15 @@ struct HomeView: View {
                     Image(systemName: "i.circle")
                         .foregroundColor(.black)
                 }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    FavListView()
+                } label: {
+                    Image(systemName: "heart.fill").foregroundColor(.red)
+                }
+
+
             }
         }
     }

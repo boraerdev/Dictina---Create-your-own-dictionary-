@@ -8,36 +8,75 @@
 import SwiftUI
 
 struct DetailView: View {
+    @Environment (\.presentationMode) var presentationMmode
+    @State var favClicked: Bool = false
     @EnvironmentObject var cd: CoreData
     @State var pickerSelecting: Int = 0
     @Binding var data: Word?
     var body: some View {
-        VStack{
-            
-            headerImage
+        ZStack {
             VStack{
-                titles
-                
-                groupBoxs
-                .padding()
-                
-                
+                headerImage
+                VStack{
+                    titles
+                    
+                    groupBoxs
+                    .padding()
+                }
+                Spacer()
             }
-            
-            Spacer()
-
+            .navigationBarBackButtonHidden(false)
+            .navigationTitle(data?.name ?? "")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    editButton
+                }
+            }
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    favButton
+                }
+            }
         }
-        .navigationBarBackButtonHidden(false)
-        .navigationTitle(data?.name ?? "")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                editButton
+        .onAppear {
+            if ((data?.fav) != false){
+                favClicked = true
             }
         }
     }
 }
 
 extension DetailView {
+    
+    private var favButton: some View {
+            Button {
+                
+                favClicked.toggle()
+                
+                if favClicked{
+                    cd.addFav(data: data!)
+                } else {
+                    cd.removeFav(data: data!)
+                    
+                }
+                
+                
+            } label: {
+                HStack{
+                    Image(systemName: favClicked ? "heart.fill" :  "heart")
+                        .foregroundColor(.white)
+                        .font(.title)
+                
+                        
+                }
+                .padding()
+                .background(Circle()
+                    .foregroundColor(.red))
+                .padding()
+            }
+    }
     
     private var headerImage : some View {
         Image(systemName: "swift")
@@ -55,9 +94,13 @@ extension DetailView {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top)
-            Text(data?.pronantation ?? "")
-                .foregroundColor(.secondary)
-                .font(.subheadline)
+            HStack{
+                Image(systemName: "ear.and.waveform")
+                    .foregroundColor(.secondary)
+                Text(data?.pronantation ?? "")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+            }
 
         }
         
@@ -66,15 +109,15 @@ extension DetailView {
     private var groupBoxs : some View {
         VStack {
             GroupBox() {
-                HStack {
-                    Spacer()
-                    Image(systemName: "info")
-                        .foregroundColor(.blue)
-                    Spacer()
+                    
                     Text(data?.definition ?? "")
+                        .frame(maxWidth: .infinity)
                         .multilineTextAlignment(.leading)
-                    Spacer()
-                }
+                        .overlay(
+                            Image(systemName: "info")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(.blue)
+                        )
             }
             GroupBox {
                 Text(data?.examples ?? "")
@@ -82,7 +125,7 @@ extension DetailView {
             } label: {
                 HStack{
                     Spacer()
-                    Text("Examples 😋")
+                    Text("Examples")
                         .padding(8)
                     Spacer()
                 }
@@ -96,6 +139,7 @@ extension DetailView {
     private var editButton: some View {
         Menu {
             Button {
+                presentationMmode.wrappedValue.dismiss()
                 cd.deleteDataFromEntity(entity: data!)
             } label: {
 
@@ -103,12 +147,18 @@ extension DetailView {
                     .foregroundColor(.red)
                 
             }
+            Button {
+                //
+            } label: {
+                Label("Edit", systemImage: "pencil")
+            }
+
 
         } label: {
             Label {
                 Text("Edit")
             } icon: {
-                Image(systemName: "pencil")
+                Image(systemName: "rectangle.and.pencil.and.ellipsis")
                     .foregroundColor(.black)
             }
 

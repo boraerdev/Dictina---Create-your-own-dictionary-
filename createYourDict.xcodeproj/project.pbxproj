@@ -16,6 +16,8 @@
 		0A05242728907D2F001275A7 /* AddPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A05242628907D2F001275A7 /* AddPageView.swift */; };
 		0A05242A28908CA4001275A7 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A05242928908CA4001275A7 /* ListRowView.swift */; };
 		0A05242E289096A7001275A7 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A05242D289096A7001275A7 /* DetailView.swift */; };
+		0A0524312890AE53001275A7 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0524302890AE53001275A7 /* FavListView.swift */; };
+		0A0524332890C710001275A7 /* Hview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0524322890C710001275A7 /* Hview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		0A05242628907D2F001275A7 /* AddPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageView.swift; sourceTree = "<group>"; };
 		0A05242928908CA4001275A7 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		0A05242D289096A7001275A7 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0A0524302890AE53001275A7 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
+		0A0524322890C710001275A7 /* Hview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +86,9 @@
 		0A052415289077E8001275A7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0A05242B2890968C001275A7 /* DetailPage */,
+				0A05242F2890AE3C001275A7 /* FavListView */,
 				0A052428289089CF001275A7 /* Components */,
+				0A05242B2890968C001275A7 /* DetailPage */,
 				0A05242228907D15001275A7 /* AddPage */,
 				0A052417289077FD001275A7 /* Home */,
 			);
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				0A05242928908CA4001275A7 /* ListRowView.swift */,
+				0A0524322890C710001275A7 /* Hview.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -168,6 +174,14 @@
 				0A05242D289096A7001275A7 /* DetailView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0A05242F2890AE3C001275A7 /* FavListView */ = {
+			isa = PBXGroup;
+			children = (
+				0A0524302890AE53001275A7 /* FavListView.swift */,
+			);
+			path = FavListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,10 +254,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0524312890AE53001275A7 /* FavListView.swift in Sources */,
 				0A05241E289078F3001275A7 /* WordCoreModel.xcdatamodeld in Sources */,
 				0A05242A28908CA4001275A7 /* ListRowView.swift in Sources */,
 				0A05242728907D2F001275A7 /* AddPageView.swift in Sources */,
 				0A05242E289096A7001275A7 /* DetailView.swift in Sources */,
+				0A0524332890C710001275A7 /* Hview.swift in Sources */,
 				0A05240A28907180001275A7 /* HomeView.swift in Sources */,
 				0A05241B289078CC001275A7 /* CoreData.swift in Sources */,
 				0A05240828907180001275A7 /* createYourDictApp.swift in Sources */,
